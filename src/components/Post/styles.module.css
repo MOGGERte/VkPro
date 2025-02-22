@@ -57,11 +57,7 @@
 
 }
 
-.liked svg{
-    display: flex;
-    gap: 4px;
-    cursor: pointer;
-    align-items: center;
+.liked {
     color: #ef2626;
 }
 

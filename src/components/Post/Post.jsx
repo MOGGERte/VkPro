@@ -8,6 +8,7 @@ import { useState } from "react";
 export const Post = ({ id, customer, photoUrl, text, likesCounter, commentsCounter, repostsCounter }) => {
 
     const [isLiked, setIsLiked] = useState(false);
+    const [likes, setLikes] = useState(likesCounter);
 
     return(
         <div>
@@ -34,8 +35,9 @@ export const Post = ({ id, customer, photoUrl, text, likesCounter, commentsCount
                     //      return !prev;
                     // })
                     // 
-                    setIsLiked((prev) => !prev);    
-                    }} className={s.likesCounter}><FaRegHeart size={16} color={isLiked && "#ef2626"}    />{likesCounter}</div>
+                    setIsLiked((prev) => !prev);
+                    setLikes((prev) =>(isLiked ? prev - 1: prev + 1));
+                    }} className={s.likesCounter}><FaRegHeart size={16} color={isLiked && "#ef2626"}    />{likes}</div>
                 
                 <div className={s.commentsCounter}><FaRegCommentAlt size={16} />{commentsCounter}</div>
                 
