@@ -16,7 +16,13 @@ export const News = () => {
         })
     }, [])
 
-    if (isLoading) return(<p className={s.loading}>Loading...</p>)
+    if (isLoading) return(
+        <div className={s.loadingContainer}>
+            <div className={s.loading}>Loading...</div>
+        </div>
+    
+    )
+
     return (
         <div className={s.newsContainer}>
             {news.map((post) => {

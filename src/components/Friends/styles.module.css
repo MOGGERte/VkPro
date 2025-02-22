@@ -10,7 +10,7 @@
 }
 
 .loading{
-    font-size: 56px;
+    font-size: 52px;
     animation: spin 1s linear infinite;
 }
 
@@ -22,11 +22,12 @@
         transform: rotate(360deg);
     }
 }
-.newsContainer{
+
+.friendsContainer{
     display: flex;
     flex-direction: column;
     gap: 12px;
     background-color: #222222;
     border-radius: 5px;
-    width: 550px;
+    width: 534px;
 }

@@ -1,0 +1,20 @@
+.customerContainer{
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    align-items: center;
+}
+
+.name{
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.avatar{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 8px;
+    cursor: pointer;
+}
