@@ -1,0 +1,31 @@
+.loadingContainer{
+    display: flex;
+    height: 100vh;
+    width: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-color: #141414;
+}
+
+.loading{
+    margin-bottom: auto;
+    font-size: 56px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from{
+        transform: rotate(0);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+.newsContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: #222222;
+    border-radius: 5px;
+    width: 550px;
+}

@@ -1,0 +1,88 @@
+.customerContainer{
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    align-items: center;
+    
+}
+
+.avatar{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 8px;
+    cursor: pointer;
+}
+
+.name{
+    cursor: pointer;
+    font-size: 12px;
+
+}
+
+.postContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.photo{
+
+}
+
+.text{
+    margin-right: auto;
+    padding-left: 8px;
+}
+
+.footerContainer{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    margin-top: 16px;
+    margin-left: 8px;
+    color: #767676;
+}
+
+.likesCounter{
+    display: flex;
+    gap: 4px;
+    cursor: pointer;
+    align-items: center;
+    transition: color 0.2s ease-in-out;
+    &:hover{
+        color: #3A3A3A;
+    }
+
+}
+
+.liked svg{
+    display: flex;
+    gap: 4px;
+    cursor: pointer;
+    align-items: center;
+    color: #ef2626;
+}
+
+.commentsCounter{
+    display: flex;
+    gap: 4px;
+    cursor: pointer;
+    align-items: center;
+    transition: color 0.2s ease-in-out;
+    &:hover{
+        color: #3A3A3A;
+    }
+}
+
+.repostsCounter{
+    display: flex;
+    gap: 4px;
+    cursor: pointer;
+    align-items: center;
+    transition: color 0.2s ease-in-out;
+    &:hover{
+        color: #3A3A3A;
+    }
+}  

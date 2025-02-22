@@ -1,0 +1,15 @@
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    width: 144px;
+}
+
+.item{
+    display: flex;
+    cursor: pointer;
+    gap: 12px;
+    padding: 8px 4px;
+    &:hover{
+        background-color: rgb(57, 57, 57);
+    }
+}
