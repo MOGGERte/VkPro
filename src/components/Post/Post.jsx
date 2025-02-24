@@ -2,13 +2,19 @@ import s from "./styles.module.css"
 import { FaRegHeart } from "react-icons/fa";
 import { FaRegCommentAlt } from "react-icons/fa";
 import { MdOutlineReply } from "react-icons/md";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 export const Post = ({ id, customer, photoUrl, text, likesCounter, commentsCounter, repostsCounter }) => {
 
     const [isLiked, setIsLiked] = useState(false);
-    const [likes, setLikes] = useState(likesCounter);
+    // const [likes, setLikes] = useState(likesCounter);
+
+    // useEffect(() => {
+    //     setLikes(isLiked ? likesCounter + 1: likesCounter);
+    // }, [isLiked])
+
+    const likes = (isLiked ? likesCounter + 1: likesCounter);
 
     return(
         <div>
@@ -36,7 +42,6 @@ export const Post = ({ id, customer, photoUrl, text, likesCounter, commentsCount
                     // })
                     // 
                     setIsLiked((prev) => !prev);
-                    setLikes((prev) =>(isLiked ? prev - 1: prev + 1));
                     }} className={s.likesCounter}><FaRegHeart size={16} color={isLiked && "#ef2626"}    />{likes}</div>
                 
                 <div className={s.commentsCounter}><FaRegCommentAlt size={16} />{commentsCounter}</div>
