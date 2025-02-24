@@ -1,7 +1,7 @@
 .header {
+    position: fixed;
     top: 0;
     left: 0;
-    position: fixed;
     background-color: #222222;
     width: 100vw;
   }
@@ -15,7 +15,6 @@
     align-items: center;
     justify-content: left;
     width: 100%;
-
   }
 
   .logo {
