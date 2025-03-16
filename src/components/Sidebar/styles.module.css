@@ -1,15 +1,24 @@
-.sidebar{
+.sidebar {
     display: flex;
     flex-direction: column;
     width: 144px;
 }
 
-.item{
+.item {
     display: flex;
     cursor: pointer;
     gap: 12px;
     padding: 8px 4px;
-    &:hover{
-        background-color: rgb(57, 57, 57);
-    }
+    transition: background-color 0.2s;
+    color: white;
+    text-decoration: none;
 }
+
+.item:hover {
+    background-color: rgb(57, 57, 57);
+}
+
+.active {
+    background-color: rgb(57, 57, 57);
+}
+

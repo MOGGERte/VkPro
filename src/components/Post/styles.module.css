@@ -1,12 +1,11 @@
-.customerContainer{
+.customerContainer {
     display: flex;
     flex-direction: row;
     gap: 4px;
     align-items: center;
-    
 }
 
-.avatar{
+.avatar {
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -15,28 +14,26 @@
     cursor: pointer;
 }
 
-.name{
+.name {
     cursor: pointer;
     font-size: 12px;
-
 }
 
-.postContainer{
+.postContainer {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-.photo{
-
+.photo {
 }
 
-.text{
+.text {
     margin-right: auto;
     padding-left: 8px;
 }
 
-.footerContainer{
+.footerContainer {
     display: flex;
     flex-direction: row;
     gap: 8px;
@@ -45,16 +42,19 @@
     color: #767676;
 }
 
-.likesCounter{
+.footerCounterItem {
     display: flex;
     gap: 4px;
     cursor: pointer;
     align-items: center;
     transition: color 0.2s ease-in-out;
-    &:hover{
-        color: #3A3A3A;
-    }
+}
 
+.footerCounterItem:hover {
+    color: #3A3A3A;
+}
+
+.likesCounter {
 }
 
 .liked {
@@ -62,23 +62,6 @@
 }
 
 .commentsCounter{
-    display: flex;
-    gap: 4px;
-    cursor: pointer;
-    align-items: center;
-    transition: color 0.2s ease-in-out;
-    &:hover{
-        color: #3A3A3A;
-    }
 }
-
-.repostsCounter{
-    display: flex;
-    gap: 4px;
-    cursor: pointer;
-    align-items: center;
-    transition: color 0.2s ease-in-out;
-    &:hover{
-        color: #3A3A3A;
-    }
-}   
+.repostsCounter {
+}

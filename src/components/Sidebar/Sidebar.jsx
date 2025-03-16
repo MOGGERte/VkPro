@@ -1,15 +1,28 @@
-import s from "./styles.module.css"
-import { FaUser, FaUserFriends } from "react-icons/fa";
-import { VscWindow } from "react-icons/vsc";
-import { GiUltrasound } from "react-icons/gi";
+import React from 'react';
+import { NavLink } from 'react-router';
+import s from './styles.module.css';
 
-export const Sidebar = ({ setPage }) => {
-    return(
-        <nav className={s.sidebar}>
-            <div onClick={() => {setPage("profile")}} className={s.item}><FaUser />My Profile</div>
-            <div onClick={() => {setPage("news")}} className={s.item}><VscWindow />News</div>
-            <div onClick={() => {setPage("friends")}} className={s.item}><FaUserFriends />Friends</div>
-            <div onClick={() => {setPage("music")}} className={s.item}><GiUltrasound />Music</div>
-        </nav>
-    )
-}
+export const Sidebar = () => {
+    return (
+      <nav className={s.sidebar}>
+        <NavLink 
+          to="/profile"
+          className={({ isActive }) => isActive ? `${s.item} ${s.active}` : s.item}
+        >
+          Профиль
+        </NavLink>
+        <NavLink 
+          to="/news"
+          className={({ isActive }) => isActive ? `${s.item} ${s.active}` : s.item}
+        >
+          Новости
+        </NavLink>
+        <NavLink 
+          to="/friends"
+          className={({ isActive }) => isActive ? `${s.item} ${s.active}` : s.item}
+        >
+          Друзья
+        </NavLink>
+      </nav>
+    );
+  };
