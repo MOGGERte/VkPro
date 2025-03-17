@@ -1,24 +1,22 @@
-import s from "./styles.module.css"
+import s from "./styles.module.css";
 import { FaRegHeart } from "react-icons/fa";
 import { FaRegCommentAlt } from "react-icons/fa";
 import { MdOutlineReply } from "react-icons/md";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-
-export const Post = ({ id, customer, photoUrl, text, likesCounter, commentsCounter, repostsCounter }) => {
-
+export const Post = ({ customer, customerId, photoUrl, text, likesCounter, commentsCounter, repostsCounter, onProfileClick }) => {
     const [isLiked, setIsLiked] = useState(false);
     const likes = isLiked ? likesCounter + 1 : likesCounter;
 
-    return(
+    return (
         <div>
-            <div className={s.customerContainer}>
-                <img className={s.avatar} src={customer.photoUrl} alt="avatar" />
+            <div className={s.customerContainer} onClick={() => onProfileClick(customerId)}>
+                <img className={s.avatar} src={customer.avatar} alt={`${customer.name}'s avatar`} />
                 <div className={s.name}>{customer.name}</div>
             </div>
 
             <div className={s.postContainer}>
-                <img className={s.photo} src={photoUrl} alt="post" />
+                <img className={s.photo} src={photoUrl} alt="Post" />
                 <div className={s.text}>{text}</div>
             </div>
 
@@ -42,5 +40,5 @@ export const Post = ({ id, customer, photoUrl, text, likesCounter, commentsCount
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};

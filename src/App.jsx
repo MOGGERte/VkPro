@@ -25,7 +25,7 @@ export const App = () => {
                     <Route path="/profile/:id" element={<Profile />} />
                     <Route path="/news" element={<News />} />
                     <Route path="/friends" element={<Friends onFriendClick={selectFriend} />} />
-                    <Route path="*" element={<div>404</div>} />
+                    <Route path="*" element={<Navigate to ='/profile/0'/>} />
                 </Routes>
             </div>
         </BrowserRouter>

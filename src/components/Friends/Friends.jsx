@@ -42,3 +42,4 @@ export const Friends = ({ onFriendClick }) => {
         </div>
     )
 }
+

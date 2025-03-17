@@ -11,7 +11,7 @@ export const AppRoutes = () => {
       <Route path="/news" element={<News />} />
       <Route path="/friends" element={<Friends />} />
       <Route path="/" element={<Navigate to = '/profile/0'/>} />
-      <Route path="*" element={<div>404</div>} />
+      <Route path="*" element={<Navigate to ='/profile/0'/>} />
     </Routes>
   );
 }; 

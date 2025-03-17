@@ -58,6 +58,23 @@ export const getProfiles = () => {
                     isOnline: "pc",
                 },
             ]);
-        }, 2000);
+        }, 100);
     });
+};
+
+
+export const getUserProfiles = async () => {
+    return [
+        {
+            id: 1,
+            name: "User 1",
+            photoUrl: "https://example.com/user1.jpg",
+        },
+        {
+            id: 2,
+            name: "User 2",
+            photoUrl: "https://example.com/user2.jpg",
+        },
+        // Добавьте больше профилей пользователей
+    ];
 };
