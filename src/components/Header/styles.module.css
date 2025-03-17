@@ -4,6 +4,7 @@
     left: 0;
     background-color: #222222;
     width: 100vw;
+    z-index: 1000;
   }
 
   .container{
