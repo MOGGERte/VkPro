@@ -1,30 +1,37 @@
-    import { useState, useEffect } from "react";
-    import { getProfiles } from "../../api/profile/request";
-    import { getFriends } from "../../api/friends/requests";
-    import s from "./styles.module.css";
+import { useState, useEffect } from "react";
+import { getProfiles } from "../../api/profile/request";
+import s from "./styles.module.css";
+import { useParams } from "react-router";
 
-    export const Profile = () => {
-        const [profile, setProfile] = useState(null);
-        const [friends, setFriends] = useState([]);
+export const Profile = () => {
+    const { id } = useParams();
+    const [profile, setProfile] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
-        useEffect(() => {
-            const fetchProfileAndFriends = async () => {
-                const profiles = await getProfiles();  
-                const friendsData = await getFriends();  
-                const currentProfile = profiles.find((item) => item.id === 0);
-                setProfile(currentProfile);
-                setFriends(friendsData);
-            };
-        
-            fetchProfileAndFriends();
-        }, []);
+    useEffect(() => {
+        const selectProfile = async () => {
+            setIsLoading(true);
+            const profiles = await getProfiles();  
+            const currentProfile = profiles.find((item) => item.id === (id ? parseInt(id) : 0));
+            setProfile(currentProfile);
+            setIsLoading(false);
+        };
 
-        return (
-            <div>
-            {profile && (
-                <div className={s.profile}>
-                    <div className={s.bannerContainer}>
-                        <img src={profile.banner} className={s.banner} />
+        selectProfile();
+    }, [id]);
+
+    if (isLoading) return (
+        <div className={s.loadingContainer}>
+            <div className={s.loading}>Loading...</div>
+        </div>
+    );
+
+    return (
+        <div>
+        {profile && (
+            <div className={s.profile}>
+                <div className={s.bannerContainer}>
+                    <img src={profile.banner} className={s.banner} />
                 </div>
 
                 <div className={s.profileContent}>
@@ -46,20 +53,8 @@
                         <div>Мои посты</div>
                     </div>
                 </div>
-
-                <div className={s.friendsList}>
-                    <div>Друзья</div>
-                    {friends.map((friend) => (
-                    <div key={friend.id} className={s.friendItem}>
-                        <img src={friend.customer.avatar} className={s.friendAvatar} />
-                        <div className={s.friendName}>
-                        {friend.customer.name} {friend.customer.surName}
-                        </div>
-                    </div>
-                    ))}
-                </div>
-                </div>
-            )}
             </div>
-        );
+        )}
+        </div>
+    );
 };
