@@ -62,19 +62,3 @@ export const getProfiles = () => {
     });
 };
 
-
-export const getUserProfiles = async () => {
-    return [
-        {
-            id: 1,
-            name: "User 1",
-            photoUrl: "https://example.com/user1.jpg",
-        },
-        {
-            id: 2,
-            name: "User 2",
-            photoUrl: "https://example.com/user2.jpg",
-        },
-        // Добавьте больше профилей пользователей
-    ];
-};

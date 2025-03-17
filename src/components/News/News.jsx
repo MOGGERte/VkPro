@@ -23,7 +23,7 @@ export const News = () => {
         </div>
     );
 
-    const handleProfileClick = (customerId) => {
+    const profileClick = (customerId) => {
         navigate(`/profile/${customerId}`);
     };
 
@@ -40,8 +40,8 @@ export const News = () => {
                         likesCounter={post.likesCounter}
                         commentsCounter={post.commentsCounter}
                         repostsCounter={post.repostsCounter}
-                        onProfileClick={handleProfileClick}
-                    />
+                        onProfileClick={profileClick}
+                     />
                 );
             })}
         </div>

@@ -11,12 +11,12 @@ export const Post = ({ customer, customerId, photoUrl, text, likesCounter, comme
     return (
         <div>
             <div className={s.customerContainer} onClick={() => onProfileClick(customerId)}>
-                <img className={s.avatar} src={customer.avatar} alt={`${customer.name}'s avatar`} />
+                <img className={s.avatar} src={customer.avatar}/>
                 <div className={s.name}>{customer.name}</div>
             </div>
 
             <div className={s.postContainer}>
-                <img className={s.photo} src={photoUrl} alt="Post" />
+                <img className={s.photo} src={photoUrl} />
                 <div className={s.text}>{text}</div>
             </div>
 

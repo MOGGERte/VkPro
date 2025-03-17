@@ -59,8 +59,11 @@ export const Profile = () => {
                     <div className={s.status}>{currentProfile.customer.status}</div>
                 </div>
             </div>
+            
             <div className={s.mainPage}>
-                <div className={s.posts}>
+                <div className={s.friendAndMusic}>
+                    <div className={s.musicContainer}>поле под музыку</div>
+                    <div className={s.posts}>
                     {userPosts.map(post => (
                         <Post
                             key={post.id}
@@ -74,6 +77,7 @@ export const Profile = () => {
                             onProfileClick={friendClick}
                         />
                     ))}
+                </div>
                 </div>
                 <div className={s.friendsListContainer}>
                     <div className={s.friendsList}>
