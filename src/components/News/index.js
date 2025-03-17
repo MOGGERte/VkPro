@@ -1,1 +1,1 @@
-export { News } from "./News.jsx"
+export { News } from './News.jsx';

@@ -1,9 +1,9 @@
-.content{
-    display: flex;
-    margin-top: calc(48px + 24px);
-    max-width: 1076px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 15px;
-    gap: 4px;
+.content {
+  display: flex;
+  margin-top: calc(48px + 24px);
+  max-width: 1076px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 15px;
+  gap: 4px;
 }

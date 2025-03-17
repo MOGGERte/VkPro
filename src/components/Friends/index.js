@@ -1,1 +1,1 @@
-export { Friends } from "./Friends.jsx"
+export { Friends } from './Friends.jsx';

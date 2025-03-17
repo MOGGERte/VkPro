@@ -1,32 +1,32 @@
-.loadingContainer{
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    height: 100vh;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
+.loadingContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
-.loading{
-    font-size: 56px;
-    animation: spin 1s linear infinite;
+.loading {
+  font-size: 56px;
+  animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-    from{
-        transform: rotate(0);
-    }
-    to{
-        transform: rotate(360deg);
-    }
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
-.newsContainer{
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    background-color: #222222;
-    border-radius: 5px;
-    width: 550px;
+.newsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: #222222;
+  border-radius: 5px;
+  width: 550px;
 }

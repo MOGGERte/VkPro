@@ -10,8 +10,8 @@ export const AppRoutes = () => {
       <Route path="/profile" element={<Profile />} />
       <Route path="/news" element={<News />} />
       <Route path="/friends" element={<Friends />} />
-      <Route path="/" element={<Navigate to = '/profile/0'/>} />
-      <Route path="*" element={<Navigate to ='/profile/0'/>} />
+      <Route path="/" element={<Navigate to="/profile/0" />} />
+      <Route path="*" element={<Navigate to="/profile/0" />} />
     </Routes>
   );
-}; 
+};
