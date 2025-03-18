@@ -3,6 +3,7 @@ import { FaRegHeart } from 'react-icons/fa';
 import { FaRegCommentAlt } from 'react-icons/fa';
 import { MdOutlineReply } from 'react-icons/md';
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 
 export const Post = ({
   customer,
@@ -15,9 +16,10 @@ export const Post = ({
 }) => {
   const [isLiked, setIsLiked] = useState(false);
   const likes = isLiked ? likesCounter + 1 : likesCounter;
-
+  const nav = useNavigate();
   const onProfileClick = (customerId) => {
     console.log(`Профиль пользователя с id ${customerId}`);
+    nav(`/profile/${customerId}`);
   };
 
   if (!customer) {
