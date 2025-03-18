@@ -11,11 +11,14 @@ export const Post = ({
   text,
   likesCounter,
   commentsCounter,
-  repostsCounter,
-  onProfileClick
+  repostsCounter
 }) => {
   const [isLiked, setIsLiked] = useState(false);
   const likes = isLiked ? likesCounter + 1 : likesCounter;
+
+  const onProfileClick = (customerId) => {
+    console.log(`Профиль пользователя с id ${customerId}`);
+  };
 
   if (!customer) {
     return null;
@@ -23,9 +26,11 @@ export const Post = ({
 
   return (
     <div>
-      <div className={s.customerContainer} onClick={() => onProfileClick(customerId)}>
-        <img className={s.avatar} src={customer.avatar} />
-        <div className={s.name}>{customer.name}</div>
+      <div className={s.customerContainer}>
+        <div className={s.cont} onClick={() => onProfileClick(customerId)}>
+          <img className={s.avatar} src={customer.avatar} />
+          <div className={s.name}>{customer.name}</div>
+        </div>
       </div>
 
       <div className={s.postContainer}>

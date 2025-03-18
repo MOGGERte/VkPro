@@ -91,12 +91,6 @@
   width: 550px;
 }
 
-.newsContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
 .friendsListContainer {
   position: relative;
   width: 329px;

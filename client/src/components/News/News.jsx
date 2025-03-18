@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router';
 import { getNews } from '../../api/news/requests.js';
 import { getUser } from '../../api/profile/request.js';
 import { Post } from '../Post/Post.jsx';
@@ -38,17 +37,16 @@ export const News = () => {
   return (
     <div className={s.newsContainer}>
       {news.map((post) => (
-        <Link to={`/profile/${post.customerId}`} key={post.id} className={s.postLink}>
-          <Post
-            customer={post.customer}
-            customerId={post.customerId}
-            photoUrl={post.photoUrl}
-            text={post.text}
-            likesCounter={post.likesCounter}
-            commentsCounter={post.commentsCounter}
-            repostsCounter={post.repostsCounter}
-          />
-        </Link>
+        <Post
+          key={post.id}
+          customer={post.customer}
+          customerId={post.customerId}
+          photoUrl={post.photoUrl}
+          text={post.text}
+          likesCounter={post.likesCounter}
+          commentsCounter={post.commentsCounter}
+          repostsCounter={post.repostsCounter}
+        />
       ))}
     </div>
   );
