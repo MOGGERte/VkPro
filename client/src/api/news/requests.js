@@ -1,12 +1,20 @@
 import { Api } from '../api';
+import { getUser } from '../profile/request.js';
 
 export const getNews = async () => {
   const data = await Api.get('/posts');
-  console.log(data);
-  return data.data;
-};
+  const posts = data.data;
 
-export const getUserPosts = async (userId) => {
-  const news = await getNews();
-  return news.filter((post) => post.customerId === userId);
+  const postsWithUserInfo = [];
+  for (const post of posts) {
+    const user = await getUser(post.customerId);
+    postsWithUserInfo.push({
+      ...post,
+      customer: {
+        name: `${user.customer.name} ${user.customer.surName}`,
+        avatar: user.customer.avatar
+      }
+    });
+  }
+  return postsWithUserInfo;
 };

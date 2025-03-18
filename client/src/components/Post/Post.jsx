@@ -17,6 +17,10 @@ export const Post = ({
   const [isLiked, setIsLiked] = useState(false);
   const likes = isLiked ? likesCounter + 1 : likesCounter;
 
+  if (!customer) {
+    return null;
+  }
+
   return (
     <div>
       <div className={s.customerContainer} onClick={() => onProfileClick(customerId)}>
