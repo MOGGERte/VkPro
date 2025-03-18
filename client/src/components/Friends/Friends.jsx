@@ -8,7 +8,7 @@ import { Loading } from '../LoadingPage';
 export const Friends = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [friends, setFriends] = useState([]);
-  const [showOnline, setShowOnline] = useState(false); // добавьте это состояние
+  const [showOnline, setShowOnline] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
