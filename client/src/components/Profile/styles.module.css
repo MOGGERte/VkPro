@@ -77,7 +77,7 @@
   flex-direction: row;
   width: 911px;
 }
-.friendAndMusic {
+.postAndMusic {
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -89,6 +89,12 @@
   background-color: #222222;
   border-radius: 5px;
   width: 550px;
+}
+
+.newsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .friendsListContainer {

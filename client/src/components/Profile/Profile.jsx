@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { Link } from 'react-router';
 import { getUser, getUsers } from '../../api/profile/request.js';
+import { getNews } from '../../api/news/requests.js';
 import { Loading } from '../LoadingPage/';
 import s from './styles.module.css';
 
@@ -19,8 +20,9 @@ export const Profile = () => {
         return getUsers();
       })
       .then((profiles) => {
-        setIsLoading(false);
         setProfiles(profiles);
+        setIsLoading(false);
+        return getNews();
       });
   }, [id]);
 
@@ -48,9 +50,9 @@ export const Profile = () => {
       </div>
 
       <div className={s.mainPage}>
-        <div className={s.friendAndMusic}>
+        <div className={s.postAndMusic}>
           <div className={s.musicContainer}>поле под музыку</div>
-          <div className={s.posts}></div>
+          <div className={s.posts}>мои новости</div>
         </div>
         <div className={s.friendsListContainer}>
           <div className={s.friendsList}>
