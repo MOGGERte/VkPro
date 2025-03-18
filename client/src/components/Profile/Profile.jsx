@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { Link } from 'react-router';
-import { getUser } from '../../api/profile/request.js';
+import { getUser, getUsers } from '../../api/profile/request.js';
 import { Loading } from '../LoadingPage/';
 import s from './styles.module.css';
 
@@ -13,12 +13,15 @@ export const Profile = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    getUser().then((profiles) => {
-      setIsLoading(false);
-      setProfiles(profiles);
-      const profile = profiles.find((profile) => profile.id === parseInt(id));
-      setCurrentProfile(profile);
-    });
+    getUser(id)
+      .then((profile) => {
+        setCurrentProfile(profile);
+        return getUsers();
+      })
+      .then((profiles) => {
+        setIsLoading(false);
+        setProfiles(profiles);
+      });
   }, [id]);
 
   if (isLoading) return <Loading />;
