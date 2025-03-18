@@ -5,6 +5,7 @@ import { getUser, getUsers } from '../../api/profile/request.js';
 import { getNews } from '../../api/news/requests.js';
 import { Loading } from '../LoadingPage/';
 import { Post } from '../Post/Post.jsx';
+import { useNavigate } from 'react-router';
 import s from './styles.module.css';
 
 export const Profile = () => {
@@ -13,6 +14,11 @@ export const Profile = () => {
   const [currentProfile, setCurrentProfile] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [userPost, setUserPost] = useState([]);
+  const nav = useNavigate();
+  const onFriendClick = () => {
+    console.log('Friend clicked');
+    nav(`/friends/`);
+  };
 
   useEffect(() => {
     setIsLoading(true);
@@ -78,15 +84,22 @@ export const Profile = () => {
           </div>
         </div>
         <div className={s.friendsListContainer}>
+          <div className={s.contText}>
+            <div className={s.frend} onClick={() => onFriendClick()}>
+              Друзья
+            </div>
+          </div>
           <div className={s.friendsList}>
-            {otherProfiles.map((profile) => (
-              <Link key={profile.id} to={`/profile/${profile.id}`} className={s.friendItem}>
-                <img className={s.avatar} src={profile.customer.avatar} />
-                <div className={s.name}>
-                  {profile.customer.name} {profile.customer.surName}
-                </div>
-              </Link>
-            ))}
+            <div className={s.cont}>
+              {otherProfiles.map((profile) => (
+                <Link key={profile.id} to={`/profile/${profile.id}`} className={s.friendItem}>
+                  <img className={s.avatar} src={profile.customer.avatar} />
+                  <div className={s.name}>
+                    {profile.customer.name} {profile.customer.surName}
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </div>

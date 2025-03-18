@@ -27,7 +27,7 @@ export const Post = ({
   }
 
   return (
-    <div>
+    <div className={s.post}>
       <div className={s.customerContainer}>
         <div className={s.cont} onClick={() => onProfileClick(customerId)}>
           <img className={s.avatar} src={customer.avatar} />
