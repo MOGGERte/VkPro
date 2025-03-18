@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router';
 import { Header } from './components/Header';
 import { Sidebar } from './components/Sidebar';
@@ -8,14 +7,6 @@ import { News } from './components/News/News';
 import s from './styles.module.css';
 
 export const App = () => {
-  // eslint-disable-next-line
-  const [selectedFriendId, setSelectedFriendId] = useState(null);
-
-  const selectFriend = (id) => {
-    console.log(`Выбранный друг: ${id}`);
-    setSelectedFriendId(id);
-  };
-
   return (
     <BrowserRouter>
       <Header />
@@ -25,7 +16,7 @@ export const App = () => {
           <Route path="/profile" element={<Navigate to="/profile/0" />} />
           <Route path="/profile/:id" element={<Profile />} />
           <Route path="/news" element={<News />} />
-          <Route path="/friends" element={<Friends onFriendClick={selectFriend} />} />
+          <Route path="/friends" element={<Friends />} />
           <Route path="*" element={<Navigate to="/profile/0" />} />
         </Routes>
       </div>

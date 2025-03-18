@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router';
 import { getProfiles } from '../../api/profile/request.js';
 import { getUserPosts } from '../../api/news/requests.js';
 import { Post } from '../Post/Post.jsx';
+import { Loading } from '../LoadingPage/';
 import s from './styles.module.css';
 
 export const Profile = () => {
@@ -31,16 +32,11 @@ export const Profile = () => {
     }
   }, [currentProfile]);
 
-  if (isLoading)
-    return (
-      <div className={s.loadingContainer}>
-        <div className={s.loading}>Loading...</div>
-      </div>
-    );
+  if (isLoading) return <Loading />;
 
   if (!currentProfile) return <div>Profile not found</div>;
 
-  const otherProfiles = profiles.filter((profile) => profile.id !== parseInt(id));
+  const otherProfiles = profiles.filter((profile) => profile.id !== Number(id));
 
   const friendClick = (friendId) => {
     navigate(`/profile/${friendId}`);
