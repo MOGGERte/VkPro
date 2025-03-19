@@ -17,9 +17,18 @@ export const Post = ({
   const [isLiked, setIsLiked] = useState(false);
   const likes = isLiked ? likesCounter + 1 : likesCounter;
   const nav = useNavigate();
+
   const onProfileClick = (customerId) => {
     console.log(`Профиль пользователя с id ${customerId}`);
     nav(`/profile/${customerId}`);
+  };
+
+  const onLikeClick = () => {
+    setIsLiked((prev) => {
+      const newState = !prev;
+      console.log(`${newState ? 'Поставил' : 'Убрал'} лайк на пост с id ${customerId}`);
+      return newState;
+    });
   };
 
   if (!customer) {
@@ -41,10 +50,7 @@ export const Post = ({
       </div>
 
       <div className={s.footerContainer}>
-        <div
-          onClick={() => setIsLiked((prev) => !prev)}
-          className={`${s.footerCounterItem} ${s.likesCounter}`}
-        >
+        <div onClick={onLikeClick} className={`${s.footerCounterItem} ${s.likesCounter}`}>
           <FaRegHeart size={16} color={isLiked ? '#ef2626' : '#767676'} />
           {likes}
         </div>
