@@ -25,6 +25,12 @@ app.get("/posts", (req, res) => {
   res.json(posts);
 });
 
+app.get("/posts/user/:id", (req, res) => {
+  const userId = Number(req.params.id);
+  const userPosts = posts.filter((post) => post.customerId === userId);
+  res.json(userPosts);
+});
+
 app.get("/friends", (req, res) => {
   res.json(friends);
 });
