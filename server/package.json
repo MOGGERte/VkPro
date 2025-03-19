@@ -3,6 +3,7 @@
   "version": "6.6.6",
   "description": "zxc",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "dev": "nodemon index.js",
     "prod": "node index.js"
