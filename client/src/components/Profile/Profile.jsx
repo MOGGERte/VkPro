@@ -21,24 +21,28 @@ export const Profile = () => {
   };
 
   useEffect(() => {
-    setIsLoading(true);
-    getUser(id)
-      .then((profile) => {
+    const getData = async () => {
+      try {
+        setIsLoading(true);
+        const [profile, profiles, news] = await Promise.all([getUser(id), getUsers(), getNews()]);
+
         console.log('Profile:', profile);
         setCurrentProfile(profile);
-        return getUsers();
-      })
-      .then((profiles) => {
+
         console.log('Profiles:', profiles);
         setProfiles(profiles);
-        return getNews().then((news) => {
-          console.log('News:', news);
-          const userPosts = news.filter((post) => post.customerId === Number(id));
-          console.log('User Posts:', userPosts);
-          setUserPost(userPosts);
-          setIsLoading(false);
-        });
-      });
+
+        console.log('News:', news);
+        const userPosts = news.filter((post) => post.customerId === Number(id));
+        console.log('User Posts:', userPosts);
+        setUserPost(userPosts);
+      } catch (error) {
+        console.error('Error load data, Иди нахуй', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    getData();
   }, [id]);
 
   if (isLoading) return <Loading />;
