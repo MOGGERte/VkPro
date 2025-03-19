@@ -20,135 +20,16 @@
   object-fit: cover;
 }
 
-.profileContent {
-  display: flex;
-  direction: ltr;
-  position: relative;
-  flex-direction: row;
-  align-items: center;
-  margin-top: -50px;
-  width: 871px;
-  height: 55px;
-  padding: 20px;
-  gap: 16px;
-  background-color: #222222;
-  border-radius: 15px;
-  z-index: 998;
-}
-
-.avatarContainer {
-  display: flex;
-  justify-content: center;
-  position: relative;
-  cursor: pointer;
-  top: -40px;
-}
-
-.avatar {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid black;
-  z-index: 999;
-}
-
-.info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 8px;
-}
-
-.name {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.status {
-  margin-right: auto;
-  font-size: 14px;
-  color: #71aaeb;
-}
-
 .mainPage {
   display: flex;
   flex-direction: row;
   width: 911px;
 }
+
 .postAndMusic {
   display: flex;
   flex-direction: column;
   gap: 12px;
-}
-.posts {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  background-color: #222222;
-  border-radius: 5px;
-  width: 550px;
-}
-
-.friendsListContainer {
-  position: sticky;
-  width: 329px;
-  height: 293px;
-  margin-left: auto;
-  background-color: #2f2f2f;
-  border-radius: 8px;
-  top: 80px;
-}
-
-.contText {
-}
-
-.frend {
-  padding: 4px;
-  padding-top: 16px;
-  padding-left: 12px;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-.friendsList {
-  display: flex;
-  background-color: #2f2f2f;
-  border-radius: 8px;
-}
-
-.cont {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.friendItem {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 8px;
-  padding: 8px;
-  background-color: #2f2f2f;
-  border-radius: 8px;
-  width: 100%;
-  cursor: pointer;
-}
-
-.friendItem .avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 2px solid black;
-  object-fit: cover;
-}
-
-.friendItem .name {
-  font-size: 22px;
-  font-weight: normal;
-  text-align: left;
 }
 
 .musicContainer {
