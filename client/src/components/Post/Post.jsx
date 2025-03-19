@@ -5,18 +5,22 @@ import { MdOutlineReply } from 'react-icons/md';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { updatePostLike } from '../../api/posts/requests';
+import { useEffect } from 'react';
 
 export const Post = ({
+  postId,
   customer,
   customerId,
   photoUrl,
   text,
   likesCounter,
   commentsCounter,
-  repostsCounter
+  repostsCounter,
+  likedInfo
 }) => {
   const [isLiked, setIsLiked] = useState(false);
-  const likes = isLiked ? likesCounter + 1 : likesCounter;
+  const [likes, setLikes] = useState(likesCounter);
+
   const nav = useNavigate();
 
   const onProfileClick = (customerId) => {
@@ -24,22 +28,29 @@ export const Post = ({
     nav(`/profile/${customerId}`);
   };
 
+  const userId = 0; //сюда загружать айди пользователя с бека, после авторизации
+
   const onLikeClick = async () => {
-    setIsLiked((prev) => {
-      const newState = !prev;
-      console.log(`${newState ? 'Поставил' : 'Убрал'} лайк на пост с id ${customerId}`);
-      if (newState) {
-        updatePostLike(customerId, true);
-      } else {
-        updatePostLike(customerId, false);
-      }
-      return newState;
-    });
+    const newState = !isLiked;
+    console.log(`${newState ? 'Поставил' : 'Убрал'} лайк на пост с id ${postId}`);
+    setIsLiked(newState);
+    console.log('обновил лайк');
+    setLikes((prev) => (newState ? prev + 1 : prev - 1));
+    updatePostLike(postId, newState, userId);
   };
 
   if (!customer) {
     return null;
   }
+  useEffect(() => {
+    console.log('likedInfo:', likedInfo);
+    console.log('userId:', userId);
+    if (likedInfo && likedInfo.includes(userId)) {
+      setIsLiked(true);
+    } else {
+      setIsLiked(false);
+    }
+  }, [likedInfo, userId]);
 
   return (
     <div className={s.post}>

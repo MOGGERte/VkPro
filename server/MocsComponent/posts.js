@@ -9,6 +9,7 @@ export const posts = [
     likesCounter: 10,
     commentsCounter: 5,
     repostsCounter: 2,
+    likedInfo: [],
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ export const posts = [
     likesCounter: 10,
     commentsCounter: 5,
     repostsCounter: 2,
+    likedInfo: [],
   },
   {
     id: 3,
@@ -31,6 +33,7 @@ export const posts = [
     likesCounter: 666,
     commentsCounter: 222,
     repostsCounter: 0,
+    likedInfo: [],
   },
   {
     id: 4,
@@ -42,6 +45,7 @@ export const posts = [
     likesCounter: 10,
     commentsCounter: 5,
     repostsCounter: 2,
+    likedInfo: [],
   },
   {
     id: 5,
@@ -53,5 +57,6 @@ export const posts = [
     likesCounter: 10,
     commentsCounter: 5,
     repostsCounter: 2,
+    likedInfo: [],
   },
 ];

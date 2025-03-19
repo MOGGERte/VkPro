@@ -30,6 +30,7 @@ export const News = () => {
       {news.map((post) => (
         <Post
           key={post.id}
+          postId={post.id}
           customer={post.customer}
           customerId={post.customerId}
           photoUrl={post.photoUrl}
@@ -37,6 +38,7 @@ export const News = () => {
           likesCounter={post.likesCounter}
           commentsCounter={post.commentsCounter}
           repostsCounter={post.repostsCounter}
+          likedInfo={post.likedInfo}
         />
       ))}
     </div>

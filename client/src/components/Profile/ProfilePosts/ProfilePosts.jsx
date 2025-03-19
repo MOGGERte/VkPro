@@ -7,13 +7,15 @@ export const ProfilePosts = ({ userPost, customer }) => {
       {userPost.map((post) => (
         <div key={post.id}>
           <Post
-            customerId={post.customerId}
+            postId={post.id}
             customer={customer}
+            customerId={post.customerId}
             photoUrl={post.photoUrl}
             text={post.text}
             likesCounter={post.likesCounter}
             commentsCounter={post.commentsCounter}
             repostsCounter={post.repostsCounter}
+            likedInfo={post.likedInfo}
           />
         </div>
       ))}

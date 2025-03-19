@@ -41,19 +41,25 @@ app.get("/users/:id", (req, res) => {
 
 app.post("/posts/:id/like", (req, res) => {
   const postId = Number(req.params.id);
-  const { isLiked } = req.body;
+  const { isLiked, userId } = req.body;
 
   const post = posts.find((p) => p.id === postId);
 
   if (isLiked) {
-    post.likesCounter += 1;
+    if (!post.likedInfo.includes(userId)) {
+      post.likedInfo.push(userId);
+      post.likesCounter += 1;
+    }
   } else {
-    post.likesCounter -= 1;
+    const index = post.likedInfo.indexOf(userId);
+    if (index !== -1) {
+      post.likedInfo.splice(index, 1);
+      if (post.likesCounter > 0) {
+        post.likesCounter -= 1;
+      }
+    }
   }
-
-  res.json({ message: "Like updated", post });
 });
-
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
 });
