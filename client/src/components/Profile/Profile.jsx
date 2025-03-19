@@ -27,22 +27,16 @@ export const Profile = () => {
         setIsLoading(true);
         const [profile, profiles, news] = await Promise.all([getUser(id), getUsers(), getNews()]);
 
-        console.log('Profile:', profile);
         setCurrentProfile(profile);
-
-        console.log('Profiles:', profiles);
         setProfiles(profiles);
-
-        console.log('News:', news);
-        const userPosts = news.filter((post) => post.customerId === Number(id));
-        console.log('User Posts:', userPosts);
-        setUserPost(userPosts);
+        setUserPost(news.filter((post) => post.customerId === Number(id)));
       } catch (error) {
-        console.error('Error load data, Иди нахуй', error);
+        console.error('Error fetching data:', error);
       } finally {
         setIsLoading(false);
       }
     };
+
     getData();
   }, [id]);
 

@@ -13,6 +13,17 @@ app.use(
   })
 );
 
+app.get("/news", (req, res) => {
+  const newsWithUserInfo = posts.map((post) => {
+    const user = users.find((u) => u.id === post.customerId);
+    return {
+      ...post,
+      customer: user ? user.customer : null,
+    };
+  });
+  res.json(newsWithUserInfo);
+});
+
 app.get("/posts", (req, res) => {
   res.json(posts);
 });

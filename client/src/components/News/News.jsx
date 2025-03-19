@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { getNews } from '../../api/news/requests.js';
-import { getUser } from '../../api/profile/request.js';
 import { Post } from '../Post/Post.jsx';
 import { Loading } from '../LoadingPage';
 import s from './styles.module.css';
@@ -10,28 +9,20 @@ export const News = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const userInfo = async () => {
-      setIsLoading(true);
-      const newsData = await getNews();
-      const newsWithUserInfo = await Promise.all(
-        newsData.map(async (post) => {
-          const user = await getUser(post.customerId);
-          return {
-            ...post,
-            customer: {
-              name: `${user.customer.name} ${user.customer.surName}`,
-              avatar: user.customer.avatar
-            }
-          };
-        })
-      );
-      setNews(newsWithUserInfo);
-      setIsLoading(false);
+    const fetchNews = async () => {
+      try {
+        setIsLoading(true);
+        const newsData = await getNews();
+        setNews(newsData);
+      } catch (error) {
+        console.error('Error fetching news:', error);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
-    userInfo();
+    fetchNews();
   }, []);
-
   if (isLoading) return <Loading />;
 
   return (
