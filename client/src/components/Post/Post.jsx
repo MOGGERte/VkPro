@@ -4,6 +4,7 @@ import { FaRegCommentAlt } from 'react-icons/fa';
 import { MdOutlineReply } from 'react-icons/md';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
+import { updatePostLike } from '../../api/posts/requests';
 
 export const Post = ({
   customer,
@@ -23,10 +24,15 @@ export const Post = ({
     nav(`/profile/${customerId}`);
   };
 
-  const onLikeClick = () => {
+  const onLikeClick = async () => {
     setIsLiked((prev) => {
       const newState = !prev;
       console.log(`${newState ? 'Поставил' : 'Убрал'} лайк на пост с id ${customerId}`);
+      if (newState) {
+        updatePostLike(customerId, true);
+      } else {
+        updatePostLike(customerId, false);
+      }
       return newState;
     });
   };

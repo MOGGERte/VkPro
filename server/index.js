@@ -7,11 +7,8 @@ import { users } from "./MocsComponent/users.js";
 const app = express();
 const port = 3000;
 
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-  })
-);
+app.use(cors({ origin: "http://localhost:5173" }));
+app.use(express.json());
 
 app.get("/news", (req, res) => {
   const newsWithUserInfo = posts.map((post) => {
@@ -37,9 +34,24 @@ app.get("/users", (req, res) => {
 });
 
 app.get("/users/:id", (req, res) => {
-  const userId = parseInt(req.params.id);
+  const userId = Number(req.params.id);
   const user = users.find((u) => u.id === userId);
   res.json(user);
+});
+
+app.post("/posts/:id/like", (req, res) => {
+  const postId = Number(req.params.id);
+  const { isLiked } = req.body;
+
+  const post = posts.find((p) => p.id === postId);
+
+  if (isLiked) {
+    post.likesCounter += 1;
+  } else {
+    post.likesCounter -= 1;
+  }
+
+  res.json({ message: "Like updated", post });
 });
 
 app.listen(port, () => {
