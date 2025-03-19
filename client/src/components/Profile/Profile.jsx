@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { getUser, getUsers } from '../../api/profile/request.js';
-import { getNews } from '../../api/news/requests.js';
+import { getUserPosts } from '../../api/news/requests.js';
 import { Loading } from '../LoadingPage/';
 import { useNavigate } from 'react-router';
 import { ProfileInfo } from './ProfileInfo';
@@ -25,11 +25,15 @@ export const Profile = () => {
     const getData = async () => {
       try {
         setIsLoading(true);
-        const [profile, profiles, news] = await Promise.all([getUser(id), getUsers(), getNews()]);
+        const [profile, profiles, userPosts] = await Promise.all([
+          getUser(id),
+          getUsers(),
+          getUserPosts(id)
+        ]);
 
         setCurrentProfile(profile);
         setProfiles(profiles);
-        setUserPost(news.filter((post) => post.customerId === Number(id)));
+        setUserPost(userPosts);
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
