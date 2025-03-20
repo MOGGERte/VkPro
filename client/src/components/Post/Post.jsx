@@ -1,15 +1,15 @@
 import s from './styles.module.css';
-import { FaRegHeart } from 'react-icons/fa';
-import { FaRegCommentAlt } from 'react-icons/fa';
+import { FaRegCommentAlt, FaRegHeart } from 'react-icons/fa';
 import { MdOutlineReply } from 'react-icons/md';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
-import { updatePostLike, getPostWithComments } from '../../api/posts/requests';
+import { getPostWithComments, updatePostLike } from '../../api/posts/requests';
 
 export const Post = ({ postId }) => {
   const [postData, setPostData] = useState(null);
   const [isLiked, setIsLiked] = useState(false);
   const [likes, setLikes] = useState(0);
+  const [isLikeLoading, setIsLikeLoading] = useState(false);
 
   const nav = useNavigate();
 
@@ -31,17 +31,24 @@ export const Post = ({ postId }) => {
   };
 
   const onLikeClick = async () => {
-    const newState = !isLiked;
-    console.log(`${newState ? 'Поставил' : 'Убрал'} лайк на пост с id ${postId}`);
-    setIsLiked(newState);
-    setLikes((prev) => (newState ? prev + 1 : prev - 1));
-    updatePostLike(postId, newState, 0); // вместо 0 загрузка айди пользователя
+    setIsLiked((isLiked) => {
+      const newState = !isLiked;
+      console.log(`${newState ? 'Поставил' : 'Убрал'} лайк на пост с id ${postId}`);
+
+      setLikes((prev) => (newState ? prev + 1 : prev - 1));
+      setIsLikeLoading(true);
+      updatePostLike(postId, newState, 0).finally(() => {
+        setIsLikeLoading(false);
+      }); // вместо 0 загрузка айди пользователя
+
+      return !isLiked;
+    });
   };
 
   if (!postData) return <div>Загрузка...</div>; //Временно
   console.log(postData.customer);
   return (
-    <div className={s.post}>
+    <div className={s.post} id={`id-${postData.id}`}>
       <div className={s.customerContainer}>
         {postData.customer && ( // Check post custom
           <div className={s.cont} onClick={() => onProfileClick(postData.customer.id)}>
@@ -57,10 +64,14 @@ export const Post = ({ postId }) => {
       </div>
 
       <div className={s.footerContainer}>
-        <div onClick={onLikeClick} className={`${s.footerCounterItem} ${s.likesCounter}`}>
+        <button
+          disabled={isLikeLoading}
+          onClick={onLikeClick}
+          className={`${s.footerCounterItem} ${s.likesCounter}`}
+        >
           <FaRegHeart size={16} color={isLiked ? '#ef2626' : '#767676'} />
           {likes}
-        </div>
+        </button>
 
         <div className={s.footerCounterItem}>
           <FaRegCommentAlt size={16} />

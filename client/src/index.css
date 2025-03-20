@@ -12,3 +12,22 @@ a {
   color: white;
   text-decoration: none;
 }
+
+button {
+  color: inherit;
+  background: inherit;
+  border: none;
+}
+
+/*#id-2 {*/
+/*  background: red;*/
+/*}*/
+
+/*#id-2 > div:nth-child(odd) {*/
+/*  border: 3px solid green;*/
+/*}*/
+
+/*#id-2:has(img:hover) {*/
+/*  transform: scale(1.5);*/
+/*  transition: 0.3s ease-out;*/
+/*}*/
