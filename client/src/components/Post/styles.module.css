@@ -70,7 +70,17 @@
   color: #ef2626;
 }
 
-.commentsCounter {
+.commentsContainer {
+  display: flex;
+  gap: 4px;
+  align-items: center;
 }
+
+.comment {
+}
+
+.commentText {
+}
+
 .repostsCounter {
 }

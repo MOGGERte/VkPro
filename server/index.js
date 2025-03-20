@@ -3,6 +3,7 @@ import express from "express";
 import { friends } from "./MocsComponent/friends.js";
 import { posts } from "./MocsComponent/posts.js";
 import { users } from "./MocsComponent/users.js";
+import { comments } from "./MocsComponent/comments.js";
 
 const app = express();
 const port = 3000;
@@ -21,8 +22,40 @@ app.get("/news", (req, res) => {
   res.json(newsWithUserInfo);
 });
 
-app.get("/posts", (req, res) => {
-  res.json(posts);
+app.get("/posts/:id", (req, res) => {
+  const postId = Number(req.params.id);
+  const post = posts.find((p) => p.id === postId);
+
+  const customer = users.find((u) => u.id === post.customerId);
+  console.log(customer);
+
+  const postComments = comments
+    .filter((comment) => comment.postId === postId)
+    .map((comment) => {
+      const commentCustomer = users.find((u) => u.id === comment.customerId);
+      return {
+        ...comment,
+        customer: commentCustomer
+          ? {
+              id: commentCustomer.id,
+              name: commentCustomer.name,
+              avatar: commentCustomer.avatar,
+            }
+          : null,
+      };
+    });
+
+  res.json({
+    ...post,
+    customer: customer
+      ? {
+          id: customer.id,
+          name: customer.customer.name,
+          avatar: customer.customer.avatar,
+        }
+      : null,
+    comments: postComments,
+  });
 });
 
 app.get("/posts/user/:id", (req, res) => {
