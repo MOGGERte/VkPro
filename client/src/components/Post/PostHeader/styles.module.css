@@ -1,0 +1,18 @@
+.customerContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: bold;
+}

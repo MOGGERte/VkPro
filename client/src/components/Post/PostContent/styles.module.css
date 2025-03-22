@@ -1,0 +1,16 @@
+.postContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.photo {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.text {
+  font-size: 14px;
+  color: #e1e3e6;
+}

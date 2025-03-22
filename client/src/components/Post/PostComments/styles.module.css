@@ -1,0 +1,23 @@
+.commentsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.comment {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.commentText {
+  font-size: 12px;
+  color: #e1e3e6;
+}
+
+.avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}

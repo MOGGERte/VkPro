@@ -98,6 +98,8 @@ app.post("/posts/:id/like", (req, res) => {
       }
     }
   }
+
+  res.json({ statusbar: "success" });
 });
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);

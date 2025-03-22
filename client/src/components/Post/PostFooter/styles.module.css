@@ -1,0 +1,22 @@
+.footerContainer {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.footerCounterItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  color: #767676;
+  user-select: none;
+}
+
+.footerCounterItem:hover {
+  color: #e1e3e6;
+}
+
+.liked {
+  color: #ef2626;
+}
