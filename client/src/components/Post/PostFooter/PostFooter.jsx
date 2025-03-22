@@ -13,20 +13,28 @@ export const PostFooter = ({
 }) => {
   const [isLiked, setIsLiked] = useState(defaultIsLiked);
   const [likes, setLikes] = useState(defaultLikes);
+  const [isLoading, setIsLoading] = useState(false);
 
   const onLikeClick = async () => {
     const newState = !isLiked;
     setIsLiked(newState);
     setLikes((prev) => (newState ? prev + 1 : prev - 1));
-    updatePostLike(postId, newState, 0);
+    setIsLoading(true);
+    updatePostLike(postId, newState, 0).finally(() => {
+      setIsLoading(false);
+    });
   };
 
   return (
     <div className={s.footerContainer}>
-      <div onClick={onLikeClick} className={`${s.footerCounterItem} ${isLiked ? s.liked : ''}`}>
+      <button
+        onClick={onLikeClick}
+        className={`${s.footerCounterItem} ${isLiked ? s.liked : ''}`}
+        disabled={isLoading}
+      >
         <FaRegHeart size={16} />
         {likes}
-      </div>
+      </button>
       <div className={s.footerCounterItem}>
         <FaRegCommentAlt size={16} />
         {commentsCount}
