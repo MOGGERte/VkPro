@@ -1,5 +1,6 @@
 import s from './styles.module.css';
 import { Link } from 'react-router';
+import PropTypes from 'prop-types';
 
 export const ProfileFriendList = ({ otherProfiles, onFriendClick }) => {
   return (
@@ -23,4 +24,18 @@ export const ProfileFriendList = ({ otherProfiles, onFriendClick }) => {
       </div>
     </div>
   );
+};
+
+ProfileFriendList.propTypes = {
+  otherProfiles: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      customer: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        surName: PropTypes.string.isRequired,
+        avatar: PropTypes.string.isRequired
+      }).isRequired
+    })
+  ).isRequired,
+  onFriendClick: PropTypes.func.isRequired
 };

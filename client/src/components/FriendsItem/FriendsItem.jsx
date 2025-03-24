@@ -1,4 +1,6 @@
 import s from './styles.module.css';
+import PropTypes from 'prop-types';
+
 export const FriendItem = ({ customer }) => {
   return (
     <div className={s.customerContainer}>
@@ -8,4 +10,13 @@ export const FriendItem = ({ customer }) => {
       </div>
     </div>
   );
+};
+
+FriendItem.propTypes = {
+  customer: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    surName: PropTypes.string.isRequired,
+    avatar: PropTypes.string.isRequired
+  }).isRequired
 };

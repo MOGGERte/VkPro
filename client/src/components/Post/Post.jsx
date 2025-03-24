@@ -6,6 +6,7 @@ import { PostContent } from './PostContent/PostContent.jsx';
 import { PostFooter } from './PostFooter/PostFooter.jsx';
 import { PostComments } from './PostComments/PostComments.jsx';
 import s from './styles.module.css';
+import PropTypes from 'prop-types';
 
 export const Post = ({ postId }) => {
   const [postData, setPostData] = useState(null);
@@ -41,4 +42,8 @@ export const Post = ({ postId }) => {
       <PostComments comments={postData.comments} />
     </div>
   );
+};
+
+Post.propTypes = {
+  postId: PropTypes.number.isRequired
 };

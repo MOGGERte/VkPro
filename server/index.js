@@ -4,9 +4,10 @@ import { friends } from "./MocsComponent/friends.js";
 import { posts } from "./MocsComponent/posts.js";
 import { users } from "./MocsComponent/users.js";
 import { comments } from "./MocsComponent/comments.js";
+import db from "./configs/db.js";
 
 const app = express();
-const port = 3000;
+const port = Number(process.env.PORT) || 3000;
 
 app.use(cors({ origin: "http://localhost:5173" }));
 app.use(express.json());
@@ -68,8 +69,10 @@ app.get("/friends", (req, res) => {
   res.json(friends);
 });
 
-app.get("/users", (req, res) => {
-  res.json(users);
+app.get("/users", async (req, res) => {
+  const query = `select * from users;`;
+  const data = await db.any(query);
+  res.json(data);
 });
 
 app.get("/users/:id", (req, res) => {
@@ -100,6 +103,24 @@ app.post("/posts/:id/like", (req, res) => {
   }
   res.json({ statusbar: "success" });
 });
-app.listen(port, () => {
-  console.log(`Server started on port ${port}`);
-});
+
+(async () => {
+  try {
+    await db.any(`select CURRENT_TIMESTAMP`);
+    console.log("Database Connected");
+    app.listen(port, () => {
+      console.log(`Server started on port ${port}`);
+    });
+  } catch (err) {
+    console.error(err);
+  }
+})();
+
+// app.get('/users', async (req, res) => {
+//   const data = await db.any(`
+//       SELECT id, email, first_name, avatar_url
+//       FROM users
+//   `);
+
+//   res.json(data);
+// });

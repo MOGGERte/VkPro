@@ -1,4 +1,5 @@
 import s from './styles.module.css';
+import PropTypes from 'prop-types';
 
 export const PostComments = ({ comments }) => {
   return (
@@ -14,4 +15,20 @@ export const PostComments = ({ comments }) => {
       ))}
     </div>
   );
+};
+
+PostComments.propTypes = {
+  comments: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      text: PropTypes.string.isRequired,
+      customer: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        avatar: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        surName: PropTypes.string.isRequired
+      }),
+      createdAt: PropTypes.string.isRequired
+    })
+  ).isRequired
 };

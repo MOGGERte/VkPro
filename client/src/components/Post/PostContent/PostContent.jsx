@@ -1,4 +1,5 @@
 import s from './styles.module.css';
+import PropTypes from 'prop-types';
 
 export const PostContent = ({ photoUrl, text }) => {
   return (
@@ -7,4 +8,9 @@ export const PostContent = ({ photoUrl, text }) => {
       <div className={s.text}>{text}</div>
     </div>
   );
+};
+
+PostContent.propTypes = {
+  photoUrl: PropTypes.string,
+  text: PropTypes.string
 };

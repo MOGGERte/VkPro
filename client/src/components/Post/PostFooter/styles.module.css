@@ -13,10 +13,6 @@
   user-select: none;
 }
 
-.footerCounterItem:hover {
-  color: #e1e3e6;
-}
-
 .liked {
   color: #ef2626;
 }

@@ -15,8 +15,12 @@ export default [
     plugins: {
       prettier: pluginPrettier
     },
+    settings: {
+      react: {
+        version: 'detect'
+      }
+    },
     rules: {
-      'react/prop-types': 'off',
       'react/display-name': 'off',
       'react/react-in-jsx-scope': 'off',
       'prettier/prettier': 'error'

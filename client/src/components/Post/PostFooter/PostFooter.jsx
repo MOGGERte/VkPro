@@ -3,6 +3,7 @@ import { FaRegCommentAlt, FaRegHeart } from 'react-icons/fa';
 import { MdOutlineReply } from 'react-icons/md';
 import { useState } from 'react';
 import { updatePostLike } from '../../../api/posts/requests.js';
+import PropTypes from 'prop-types';
 
 export const PostFooter = ({
   commentsCount,
@@ -45,4 +46,12 @@ export const PostFooter = ({
       </div>
     </div>
   );
+};
+
+PostFooter.propTypes = {
+  commentsCount: PropTypes.number.isRequired,
+  repostsCount: PropTypes.number.isRequired,
+  postId: PropTypes.number.isRequired,
+  defaultIsLiked: PropTypes.bool.isRequired,
+  defaultLikes: PropTypes.number.isRequired
 };
